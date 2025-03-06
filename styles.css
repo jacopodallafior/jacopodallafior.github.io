@@ -1,46 +1,39 @@
 .projects-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap;       /* Allow cards to wrap on smaller screens */
+  gap: 20px;             /* Space between cards */
   justify-content: center;
+  margin-top: 20px;
 }
 
 .project-card {
-  width: 150px;              /* Smaller width for a smaller image */
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
+  width: 200px;          /* Adjust width to your preference */
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.project-card:hover {
-  transform: scale(1.02);
-}
-
-.image-container {
-  position: relative;
+  text-align: center;    /* Center the content */
 }
 
 .project-card img {
   width: 100%;
-  height: auto;
+  height: 120px;         /* Set a fixed height for the image */
+  object-fit: cover;     /* Crop the image to fill the area */
   display: block;
 }
 
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5); /* Translucent black overlay */
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
+.card-content {
+  padding: 10px;
 }
 
-.overlay h3 {
+.card-content h3 {
+  margin: 0 0 5px;
+  font-size: 1em;        /* Adjust font size */
+}
+
+.card-content p {
   margin: 0;
-  font-size: 1em;
-  color: #fff;
-  font-weight: bold;
+  color: #555;
+  font-size: 0.9em;
 }
