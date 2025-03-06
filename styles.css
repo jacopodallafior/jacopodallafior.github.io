@@ -1,16 +1,30 @@
 .projects-container {
-  display: flex;
-  flex-wrap: wrap;         /* Allows wrapping to next row */
-  gap: 20px;               /* Space between cards */
-  justify-content: center; /* Center cards horizontally */
+  display: grid;
+  /* By default, 1 column on very narrow screens */
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1000px; /* Optional max width for the container */
+  margin: 0 auto;    /* Center the container if you like */
+}
+
+/* At 600px or wider, show 2 columns */
+@media (min-width: 600px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* At 900px or wider, show 3 columns */
+@media (min-width: 900px) {
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .project-card {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
-  /* Choose a width that allows 2 or 3 cards per row in your container */
-  width: 300px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -18,10 +32,11 @@
 
 .project-card img {
   width: 100%;
-  height: 180px;
+  height: 120px;
   object-fit: cover;
   display: block;
 }
+
 
 
 .project-card:hover {
