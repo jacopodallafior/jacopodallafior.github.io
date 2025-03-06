@@ -6,7 +6,7 @@
 }
 
 .project-card {
-  width: 250px;              /* Smaller width for a smaller image */
+  width: 150px;              /* Smaller width for a smaller image */
   border: 1px solid #ddd;
   border-radius: 5px;
   overflow: hidden;
