@@ -1,26 +1,192 @@
-<!-- project1.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MPC Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MPC Project - Model Predictive Control</title>
+  <!-- Link to external CSS if desired -->
+  <link rel="stylesheet" href="styles.css">
   <style>
+    /* Inline styles for demonstration */
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f9f9f9;
-    }
-    h1 {
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
       color: #333;
+      line-height: 1.6;
     }
-    /* Add any custom styling here */
+    header {
+      background: #35424a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.1em;
+    }
+    nav {
+      background: #e8491d;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      border-bottom: 2px solid #e8491d;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #35424a;
+    }
+    .assignment {
+      margin-bottom: 30px;
+    }
+    .assignment h3 {
+      margin: 10px 0;
+      color: #35424a;
+    }
+    .assignment p {
+      margin-bottom: 10px;
+    }
+    .pdf-link a {
+      text-decoration: none;
+      color: #e8491d;
+      font-weight: bold;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    footer {
+      background: #35424a;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
-  <h1>Model Predictive Control (MPC) Project</h1>
-  <p>
-    This page describes the details of my MPC project...hahshh
-  </p>
-  <!-- Add your content here -->
+  <header>
+    <h1>Model Predictive Control (MPC) Project</h1>
+    <p>Jacopo Dallafior | KTH Royal Institute of Technology</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#assignments">Assignments</a>
+    <a href="#theory">Theory</a>
+    <a href="#results">Results</a>
+  </nav>
+  <div class="container">
+    <!-- Introduction Section -->
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>
+        Welcome to my Model Predictive Control (MPC) project page. This repository contains comprehensive coursework and projects for the MPC module at KTH Royal Institute of Technology. The work covers a range of control strategies—from state feedback and LQR designs to advanced Nonlinear MPC for space rendezvous maneuvers using the Astrobee robot. The project integrates theoretical control principles with practical implementation using Python, CVXPY, and MOSEK.
+      </p>
+    </section>
+    
+    <!-- Assignments Overview Section -->
+    <section id="assignments">
+      <h2>Assignments Overview</h2>
+      
+      <div class="assignment">
+        <h3>Assignment 1: State Feedback Control Design</h3>
+        <p>
+          This assignment focuses on modeling the Astrobee’s dynamics, discretizing the continuous-time model, and designing a state feedback controller with integral action to ensure zero steady-state error.
+        </p>
+        <p class="pdf-link"><a href="Assignment1_JacopoDallafior_StefanoTonini.pdf" target="_blank">Download Assignment 1 PDF</a></p>
+      </div>
+      
+      <div class="assignment">
+        <h3>Assignment 2: Finite-Time Optimal Control</h3>
+        <p>
+          In this task, a finite-time optimal control strategy is developed to perform rendezvous maneuvers. The assignment covers the discretization of dynamics, formulation of an optimal control problem, and constraints ensuring safe approach of the Astrobee robot.
+        </p>
+        <p class="pdf-link"><a href="Assignment2_JacopoDallafior_StefanoTonini.pdf" target="_blank">Download Assignment 2 PDF</a></p>
+      </div>
+      
+      <div class="assignment">
+        <h3>Assignment 3: Linear Quadratic and Gaussian Regulator (LQR/LQG)</h3>
+        <p>
+          This assignment deals with designing and tuning an LQR controller. Topics include stability analysis, pole placement, and the effects of tuning the noise covariance matrices in an LQG framework.
+        </p>
+        <p class="pdf-link"><a href="Assignment3_JacopoDallafior_StefanoTonini.pdf" target="_blank">Download Assignment 3 PDF</a></p>
+      </div>
+      
+      <div class="assignment">
+        <h3>Assignment 4: MPC Implementation</h3>
+        <p>
+          Here, the focus is on the practical implementation of a linear MPC controller. The assignment explores the influence of control horizons, the formulation of cost functions, constraint handling, and the impact of relaxing control limits.
+        </p>
+        <p class="pdf-link"><a href="Assignment4_JacopoDallafior_StefanoTonini.pdf" target="_blank">Download Assignment 4 PDF</a></p>
+      </div>
+      
+      <div class="assignment">
+        <h3>Final Project: Nonlinear MPC for Space Rendezvous</h3>
+        <p>
+          The final project extends the coursework into a full-scale implementation of Nonlinear MPC. It involves modeling the nonlinear dynamics of the Astrobee robot, implementing time-varying reference tracking, and comparing various parameter sets to ensure robust rendezvous performance.
+        </p>
+        <p class="pdf-link"><a href="FinalProject_JacopoDallafior_StefanoTonini_OscarCeder.pdf" target="_blank">Download Final Project PDF</a></p>
+      </div>
+    </section>
+    
+    <!-- Theory Section -->
+    <section id="theory">
+      <h2>Theory and Methods Applied</h2>
+      <p>
+        The foundation of this project is built on key theoretical principles and practical control strategies:
+      </p>
+      <ul>
+        <li><strong>Astrobee Dynamics:</strong> Modeling using Newton-Euler equations and quaternion kinematics for robust attitude representation.</li>
+        <li><strong>State Feedback and LQR:</strong> Techniques to stabilize the system and minimize quadratic cost functions while ensuring reachability and stabilizability.</li>
+        <li><strong>Finite-Time Optimal Control:</strong> Formulation of an optimal control problem to guarantee safe and efficient rendezvous maneuvers under constraints.</li>
+        <li><strong>Model Predictive Control (MPC):</strong> Designing a receding-horizon optimization framework that incorporates state and control constraints to dynamically adapt to disturbances.</li>
+        <li><strong>Nonlinear MPC (NMPC):</strong> Extending the MPC approach to handle nonlinear dynamics and time-varying references, ensuring robust performance even in the presence of uncertainties or actuator faults.</li>
+      </ul>
+      <p>
+        Advanced numerical solvers such as MOSEK are used together with Python-based optimization libraries (CVXPY) to solve these complex control problems in real time.
+      </p>
+    </section>
+    
+    <!-- Results and Analysis Section -->
+    <section id="results">
+      <h2>Results and Analysis</h2>
+      <p>
+        Extensive simulations were conducted to evaluate the performance of the controllers:
+      </p>
+      <ul>
+        <li><strong>Control Horizon Analysis:</strong> Investigating how varying the prediction horizon affects the size of invariant sets and overall system performance.</li>
+        <li><strong>Parameter Tuning:</strong> Comparison among different tuning sets (P1, P2, and P3) to balance convergence speed, energy consumption, and control input aggressiveness.</li>
+        <li><strong>Disturbance Rejection:</strong> Evaluating system resilience under ideal conditions versus scenarios with faulty thrusters and external disturbances.</li>
+        <li><strong>Tracking Performance:</strong> Assessment of both linear and nonlinear MPC strategies to achieve accurate rendezvous maneuvers with minimal tracking error.</li>
+      </ul>
+      <p>
+        The simulation results confirm that the designed controllers achieve robust performance, with precise state convergence and effective disturbance rejection.
+      </p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2024 Jacopo Dallafior. All rights reserved.</p>
+  </footer>
 </body>
 </html>
