@@ -1,16 +1,17 @@
-/*.projects-container {
+.projects-container {
   display: grid;
   /* By default, 1 column on very narrow screens */
- /* grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
   max-width: 1000px; /* Optional max width for the container */
-/*  margin: 0 auto;    /* Center the container if you like */
-/*} */
+  margin: 0 auto;    /* Center the container if you like */
+} */
+
+/*
 .container {
   width: 100%;
-  background: #fff; /* optional */
-}
-
+  background: #fff; /* optional 
+}*/
 /* At 600px or wider, show 2 columns */
 @media (min-width: 600px) {
   .projects-container {
