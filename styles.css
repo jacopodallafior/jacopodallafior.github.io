@@ -60,8 +60,25 @@
 }
 
 
-.logo {
-  width: 50px;
-  vertical-align: middle;
-  border-radius: 50%; /* Makes the logo circular */
+.education-entry {
+  display: flex;               /* Places logo and text in a row */
+  align-items: center;         /* Vertically center them */
+  margin-bottom: 20px;         /* Spacing between entries */
 }
+
+.education-entry .logo {
+  width: 40px;                 /* Adjust size as needed */
+  height: 40px;                /* Keep width & height same for a circle */
+  margin-right: 15px;          /* Spacing between the logo and text */
+  border-radius: 50%;          /* Makes the logo circular */
+  object-fit: cover;           /* Ensures the image fills the circle */
+}
+
+.education-details h3 {
+  margin: 0 0 5px;             /* Some spacing below the heading */
+}
+
+.education-details p {
+  margin: 0 0 5px;
+}
+
