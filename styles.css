@@ -87,3 +87,22 @@
   margin: 0 0 5px;
 }
 
+.experience-entry {
+display: flex;
+align-items: center;
+margin-bottom: 20px;
+}
+.experience-entry .logo {
+width: 70px;
+height: 70px;
+margin-right: 15px;
+border-radius: 50%;
+object-fit: cover;
+}
+.experience-details h3 {
+margin: 0 0 5px;
+}
+.experience-details p,
+.experience-details ul {
+margin: 0 0 5px;
+}
