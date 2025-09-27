@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Air Quality Prediction - Rolling Window Project</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #35424a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    nav {
+      background: #e8491d;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      border-bottom: 2px solid #e8491d;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #35424a;
+    }
+    .assignment {
+      margin-bottom: 20px;
+    }
+    .assignment h3 {
+      margin: 10px 0;
+      color: #35424a;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    footer {
+      background: #35424a;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+    .repo-link a {
+      text-decoration: none;
+      color: #e8491d;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Air Quality Prediction - Rolling Window</h1>
+    <p>Jacopo Dallafior | KTH Royal Institute of Technology</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#pipelines">Pipelines</a>
+    <a href="#results">Results</a>
+  </nav>
+  <div class="container">
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>
+        This project focuses on <strong>air quality prediction</strong> using a machine learning system with a rolling window approach.
+        Data from air quality and weather sources is processed and stored in a feature store for both <em>batch</em> and <em>real-time pipelines</em>.
+        The main goal is to forecast PM2.5 levels in Serso via dei Caduti, leveraging scalable ML pipelines for training and inference.
+      </p>
+      <p class="repo-link">
+        📂 <a href="https://github.com/jacopodallafior/Air_Quality_Rolling_Window" target="_blank">View the full repository on GitHub</a>
+      </p>
+    </section>
+
+    <section id="pipelines">
+      <h2>Pipelines Overview</h2>
+      <div class="assignment">
+        <h3>1. Backfill Feature Pipeline</h3>
+        <p>Initializes the feature store with historical weather and air quality data from sources like aqicn.org and open-meteo.com.</p>
+      </div>
+      <div class="assignment">
+        <h3>2. Daily Feature Pipeline</h3>
+        <p>Automatically updates feature groups daily with new measurements and forecasts.</p>
+      </div>
+      <div class="assignment">
+        <h3>3. Training Pipeline</h3>
+        <p>Trains an <strong>XGBoost regression model</strong> using combined weather and air quality features. Evaluation metrics include MSE and R².</p>
+      </div>
+      <div class="assignment">
+        <h3>4. Batch Inference Pipeline</h3>
+        <p>Performs batch predictions weekly and monitors model performance over time.</p>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results</h2>
+      <p>
+        The rolling window approach improves prediction stability and accuracy over standard models.
+      </p>
+      <img src="Images/RollingWindow_Results.jpg" alt="Rolling Window Results">
+      <p>
+        Comparisons with standard methods highlight the improved performance of rolling window modeling in both prediction error (MSE) and explained variance (R²).
+      </p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2024 Jacopo Dallafior. All rights reserved.</p>
+  </footer>
+</body>
+</html>
