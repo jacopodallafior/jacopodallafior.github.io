@@ -1,1 +1,183 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ML Stock Prediction - LSTM vs Transformer</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #35424a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.1em;
+    }
+    nav {
+      background: #e8491d;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 40px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      border-bottom: 2px solid #e8491d;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #35424a;
+    }
+    .figure {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .figure img {
+      max-width: 90%;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    footer {
+      background: #35424a;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+    .pdf-link {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .pdf-link a {
+      color: #e8491d;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Machine Learning for Stock Prediction</h1>
+    <p>Stefano Tonini &amp; Jacopo Dallafior | KTH Royal Institute of Technology</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#introduction">Introduction</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#discussion">Discussion</a>
+    <a href="https://github.com/jacopodallafior/ML-stock_prediction/blob/main/FINALPAPER.pdf" target="_blank">Full Paper (PDF)</a>
+  </nav>
+  <div class="container">
+    
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>
+        This project investigates the use of <strong>deep learning models</strong> for predicting stock prices, 
+        focusing on a direct comparison between <strong>Long Short-Term Memory (LSTM)</strong> networks 
+        and <strong>Transformer architectures</strong>. The aim is to evaluate their effectiveness in forecasting 
+        financial time series, specifically for Apple (AAPL) and Microsoft (MSFT) stocks.
+      </p>
+      <p>
+        We implement both models under identical conditions, carefully tune hyperparameters, 
+        and evaluate performance using metrics such as Mean Absolute Percentage Error (MAPE) 
+        and Root Mean Square Error (RMSE).
+      </p>
+    </section>
+    
+    <section id="method">
+      <h2>Methodology</h2>
+      <p>
+        The study follows a structured pipeline:
+      </p>
+      <ul>
+        <li><strong>Data collection:</strong> Historical stock prices (2008–2023) retrieved via Yahoo Finance.</li>
+        <li><strong>Preprocessing:</strong> Normalization, feature engineering (technical indicators like RSI, EMA, Bollinger Bands).</li>
+        <li><strong>Model Training:</strong> 
+          <ul>
+            <li>LSTM with stacked layers, dropout, and Adam optimizer.</li>
+            <li>Transformer with multi-head attention, positional encoding, and feed-forward layers.</li>
+          </ul>
+        </li>
+        <li><strong>Evaluation:</strong> RMSE and MAPE on unseen test data.</li>
+      </ul>
+      <div class="figure">
+        <img src="images/methodology.png" alt="Methodology diagram">
+        <p><em>Figure: Overview of the methodology pipeline.</em></p>
+      </div>
+    </section>
+    
+    <section id="results">
+      <h2>Results and Analysis</h2>
+      <p>
+        The results confirm that LSTM outperforms the Transformer model under the tested conditions:
+      </p>
+      <table border="1" cellpadding="8" cellspacing="0" style="margin:auto; border-collapse: collapse;">
+        <tr><th>Model</th><th>MSFT RMSE</th><th>MSFT MAPE</th><th>AAPL RMSE</th><th>AAPL MAPE</th></tr>
+        <tr><td>LSTM</td><td>5.23</td><td>2.15%</td><td>6.69</td><td>3.65%</td></tr>
+        <tr><td>Transformer</td><td>7.89</td><td>3.05%</td><td>8.95</td><td>4.93%</td></tr>
+      </table>
+      <div class="figure">
+        <img src="images/predictions.png" alt="Stock prediction comparison">
+        <p><em>Figure: Actual vs Predicted stock prices for AAPL and MSFT (2023 test set).</em></p>
+      </div>
+    </section>
+    
+    <section id="discussion">
+      <h2>Discussion &amp; Future Work</h2>
+      <p>
+        The findings highlight LSTM’s strong ability to capture sequential dependencies in moderately sized datasets. 
+        Transformers, while powerful in large-scale contexts, underperformed in this setup, 
+        likely due to data size and feature richness limitations.
+      </p>
+      <p>
+        Future research directions include:
+      </p>
+      <ul>
+        <li>Incorporating macroeconomic indicators and sentiment analysis.</li>
+        <li>Testing on larger and more diverse datasets.</li>
+        <li>Developing hybrid models combining LSTM’s temporal memory with Transformer’s global attention.</li>
+      </ul>
+    </section>
+    
+    <div class="pdf-link">
+      <p>
+        📄 <a href="https://github.com/jacopodallafior/ML-stock_prediction/blob/main/FINALPAPER.pdf" target="_blank">
+        Access the Full Research Paper (PDF)
+        </a>
+      </p>
+    </div>
+    
+  </div>
+  <footer>
+    <p>&copy; 2025 Stefano Tonini &amp; Jacopo Dallafior. All rights reserved.</p>
+  </footer>
+</body>
+</html>
