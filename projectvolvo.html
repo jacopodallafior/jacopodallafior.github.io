@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My PDF Presentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body { margin: 0; height: 100%; }
+    header, footer { padding: .5rem 1rem; font-family: system-ui, sans-serif; }
+    #stage { display: grid; place-items: center; height: calc(100vh - 84px); }
+    canvas { width: 100%; height: auto; max-width: 1600px; box-shadow: 0 2px 12px rgba(0,0,0,.15); }
+    button { margin-right: .5rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="prev">Prev</button>
+    <button id="next">Next</button>
+    <span id="label">Page <span id="pnum">1</span>/<span id="pcount">?</span></span>
+  </header>
+
+  <main id="stage"><canvas id="pdf-canvas"></canvas></main>
+
+  <footer>
+    <a href="presentation.pdf" download>Download PDF</a>
+  </footer>
+
+  <!-- PDF.js from a CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    const url = 'presentation.pdf';
+    const canvas = document.getElementById('pdf-canvas');
+    const ctx = canvas.getContext('2d');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const pnumEl = document.getElementById('pnum');
+    const pcountEl = document.getElementById('pcount');
+
+    let pdfDoc = null, pageNum = 1, rendering = false, pending = null;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.js';
+
+    function renderPage(num) {
+      rendering = true;
+      pdfDoc.getPage(num).then(page => {
+        const viewport = page.getViewport({ scale: calcScale(page) });
+        canvas.width = viewport.width; canvas.height = viewport.height;
+        const renderTask = page.render({ canvasContext: ctx, viewport });
+        renderTask.promise.then(() => {
+          rendering = false;
+          pnumEl.textContent = num;
+          if (pending !== null) { renderPage(pending); pending = null; }
+        });
+      });
+    }
+
+    function calcScale(page) {
+      // Fit to available width while keeping aspect ratio
+      const unscaled = page.getViewport({ scale: 1.0 });
+      const maxWidth = Math.min(window.innerWidth, 1600);
+      return maxWidth / unscaled.width;
+    }
+
+    function queueRender(num) { rendering ? pending = num : renderPage(num); }
+
+    function showPrev() { if (pageNum <= 1) return; pageNum--; queueRender(pageNum); }
+    function showNext() { if (pageNum >= pdfDoc.numPages) return; pageNum++; queueRender(pageNum); }
+
+    prevBtn.addEventListener('click', showPrev);
+    nextBtn.addEventListener('click', showNext);
+    window.addEventListener('resize', () => queueRender(pageNum));
+
+    pdfjsLib.getDocument(url).promise.then(doc => {
+      pdfDoc = doc;
+      pcountEl.textContent = doc.numPages;
+      renderPage(pageNum);
+    });
+  </script>
+</body>
+</html>
